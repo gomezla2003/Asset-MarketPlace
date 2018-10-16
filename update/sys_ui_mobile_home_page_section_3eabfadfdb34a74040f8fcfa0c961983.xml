@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_mobile_home_page_section">
+    <sys_ui_mobile_home_page_section action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <hide_title>false</hide_title>
+        <module_style>regular</module_style>
+        <roles/>
+        <sys_class_name>sys_ui_mobile_home_page_section</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2018-10-02 17:23:35</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3eabfadfdb34a74040f8fcfa0c961983</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Asset Market Place</sys_name>
+        <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
+        <sys_update_name>sys_ui_mobile_home_page_section_3eabfadfdb34a74040f8fcfa0c961983</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2018-10-02 17:23:35</sys_updated_on>
+        <title>Asset Market Place</title>
+    </sys_ui_mobile_home_page_section>
+</record_update>

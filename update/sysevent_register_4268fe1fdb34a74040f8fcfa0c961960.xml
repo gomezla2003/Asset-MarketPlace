@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <description/>
+        <event_name>x_sthc_asset_marke.item_removed</event_name>
+        <fired_by>business rule on the Asset marketplace table</fired_by>
+        <queue/>
+        <suffix>item_removed</suffix>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2018-10-02 17:09:45</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4268fe1fdb34a74040f8fcfa0c961960</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_sthc_asset_marke.item_removed</sys_name>
+        <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
+        <sys_update_name>sysevent_register_4268fe1fdb34a74040f8fcfa0c961960</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2018-10-02 17:09:45</sys_updated_on>
+        <table>x_sthc_asset_marke_asset_marketplace_table</table>
+    </sysevent_register>
+</record_update>

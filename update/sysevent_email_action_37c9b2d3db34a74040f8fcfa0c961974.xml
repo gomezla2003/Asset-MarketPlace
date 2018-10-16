@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>true</action_insert>
+        <action_update>false</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Incident" name="Incident">7d7c928f13f003000f3f76d66144b0b2</category>
+        <collection>x_sthc_asset_marke_asset_marketplace_table</collection>
+        <condition/>
+        <content_type>multipart/mixed</content_type>
+        <description/>
+        <event_name>x_sthc_asset_marke.item_removed</event_name>
+        <event_parm_1>true</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>event</generation_type>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<p>&nbsp;</p>
+<p><img style="hspace: 5px; align: left;" title="HonorHealth" src="hh_logo.pngx" alt="HonorHealth" width="118" height="59" align="left" border="" hspace="5" vspace="" /></p>
+<p><span style="font-size: 14pt;"><strong> Asset Market Place: Item Removed: ${short_description}&nbsp;</strong></span></p>
+<hr style="height: 2px; border: none; color: #000; background-color: #72246c;" />
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 12pt;">Item you are interested in as been removed.&nbsp;</span></strong></p>
+<p><strong><span style="font-size: 12pt;">Item: </span></strong><span style="font-size: 12pt;">${short_description}</span></p>
+<p><strong><span style="font-size: 12pt;">Description:</span></strong></p>
+<p><span style="font-size: 12pt;">${description}</span></p>
+<p><span style="font-size: 12pt;">Click&nbsp;<a title="here" href="https://shc.service-now.com/human_resources?sys_id=${sys_id}&amp;view=sp&amp;id=csm_ticket&amp;table=hr_case">here</a>&nbsp;to add or remove items from your hold list. </span></p>
+<p><strong><span style="font-size: 12pt;">Your HonorHealth HR&nbsp;Shared Services<br />(480) 323&nbsp;- 4501&nbsp;</span></strong></p>
+<hr style="height: 2px; border: none; color: #000; background-color: #72246c;" />
+<p>&nbsp;</p>]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name>Asset Market Place (Item Removed)</name>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields/>
+        <recipient_groups/>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>true</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>Asset Market Place Item Removed: ${short_description} </subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2018-10-02 17:15:18</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>37c9b2d3db34a74040f8fcfa0c961974</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Asset Market Place (Item Removed)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
+        <sys_update_name>sysevent_email_action_37c9b2d3db34a74040f8fcfa0c961974</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2018-10-02 17:18:40</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template/>
+        <type>email</type>
+        <weight>5</weight>
+    </sysevent_email_action>
+</record_update>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, $location,spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.filter = {};
+	
+	
+	c.setFilterName = function(name){
+		if(name == ""){
+			delete $scope.filter.name;
+		} else {
+			$scope.filter.name = name;
+		}
+	}
+			
+				
+	c.on = function(image,short_description,manufacture,model,description){
+		c.data.image = image;
+		c.data.short_description = short_description;
+		c.data.manufacture = manufacture;
+		c.data.model = model;
+		c.data.description = description;
+		
+    document.getElementById("overlay2").style.display = "block";
+}
+
+	c.off = function(){
+    document.getElementById("overlay2").style.display = "none";
+}
+	
+	c.interested = function(id){
+		
+				swal({
+				title: "Hold Item",
+				text: "This will place a hold on this item under your account",
+				icon: "warning",
+				showCancelButton:  true,
+				confirmButtonColor:  '#32CD32',
+				cancelButtonColor: '#3085d6',
+				cancelButtonText: 'Go Back',
+				confirmButtonText: 'Continue & Hold Item'
+			}).then(function(){
+					  c.data.interested = id;
+						c.server.update();
+				
+						setTimeout(function(){
+							$rootScope.$broadcast('updateList');
+			      }, 600);
+				    
+			});
+		
+	}
+	
+	c.removeInterested = function(id){
+	swal({
+				title: "Release Item",
+				text: "This will release this item and make available to the next person",
+				icon: "warning",
+				showCancelButton:  true,
+				confirmButtonColor:  '#32CD32',
+				cancelButtonColor: '#3085d6',
+				cancelButtonText: 'Go Back',
+				confirmButtonText: 'Release Item'
+			}).then(function(){
+					 c.data.remove = id;
+		       c.server.update();
+				
+						setTimeout(function(){
+							$rootScope.$broadcast('updateList');
+			      }, 500);
+				    
+			});
+	}
+	
+		$scope.InterestedThisItem = function(ID){
+	var array = c.data.intJSON;
+		var result = array.indexOf(ID);
+		if(result > 1)
+			return false;
+		return true;
+	 
+	}
+		
+		$scope.getContent = function(obj){
+     return obj.value + " " + obj.text;
+ }
+		
+var app = angular.module('myApp', ['ngSanitize']);
+	
+
+$rootScope.$on('updateList', function() {
+	c.server.update();
+   });
+
+
+
+
+
+			
+	
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>#container2{
+  
+}
+
+.panel{
+height:200px;
+  position: relative;
+}
+
+.panel2{
+ background-color:red;
+
+-webkit-box-shadow: 12px 14px 17px -8px rgba(169,169,169,0.61);
+-moz-box-shadow: 12px 14px 17px -8px rgba(169,169,169,0.61);
+box-shadow: 12px 14px 17px -8px rgba(169,169,169,0.61);
+}
+
+
+.padded{
+  width:75%;
+position: absolute;
+  left:18%;
+  padding-top:10px;
+}
+img{
+  max-height: 90%;
+  padding:10px;
+}
+
+.overlayImage{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.link{
+  position:absolute;
+  right:1%;
+  bottom:0;
+  
+  
+}
+.overlaylink{
+    position:absolute;
+  right:3%;
+  bottom:3%;
+}
+
+
+/* styles for '...' */ 
+.description {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+/* create the ... */
+.description:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.description:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
+}
+
+.pointer {cursor: pointer;}
+
+.detail{
+  position:absolute;
+  bottom:10%;
+  left:18%;
+  z-index:1;
+}
+
+
+//POPUP
+#overlay2 {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+#text2{
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    color: #000;
+    transform: translate(-40%,-40%);
+    -ms-transform: translate(-40%,-40%);
+    background-color:#fff;
+  padding:10px;
+  line-height: 1.7em;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>asset_marketplace_my_watched_items</id>
+        <internal>false</internal>
+        <link/>
+        <name>Asset MarketPlace My Watched Items</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+  data.asset = [];
+	data.int = [];
+	var asset = new x_sthc_asset_marke.Asset_Marketplace();
+	data.asset = asset.getList();
+	data.int = asset.getInterestedList();
+	data.intJSON = JSON.stringify(data.int);
+	
+	
+	if(input){
+		if(input.interested){
+			setInterested(input.interested);
+			data.int = asset.getInterestedList();
+	    data.intJSON = JSON.stringify(data.int);
+			input.interested = '';
+			data.interested = '';
+		}
+		if(input.remove){
+			removeInt(input.remove);
+			data.int = asset.getInterestedList();
+	    data.intJSON = JSON.stringify(data.int);
+			input.remove = '';
+			data.remove = '';
+		}
+	}
+	
+	
+	
+	
+})();
+
+function setInterested(id){
+	var gr = new GlideRecord('x_sthc_asset_marke_interested_users');
+	gr.initialize();
+	gr.setValue('user',gs.getUserID());
+	gr.setValue('asset',id);
+	gr.insert();
+	input.interested = '';
+}
+
+function removeInt(id){
+	var gr = new GlideRecord('x_sthc_asset_marke_interested_users');
+	gr.addQuery('user',gs.getUserID());
+	gr.addQuery('asset',id);
+	gr.query();
+	while(gr.next()){
+		gr.deleteRecord();
+	}
+	
+}]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2018-08-23 20:25:25</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a2b5292edb04e30096b17d8bbf9619e4</sys_id>
+        <sys_mod_count>66</sys_mod_count>
+        <sys_name>Asset MarketPlace My Watched Items</sys_name>
+        <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
+        <sys_update_name>sp_widget_a2b5292edb04e30096b17d8bbf9619e4</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2018-10-10 19:46:06</sys_updated_on>
+        <template><![CDATA[<div id="container2">
+  
+  <div class="filter">
+  <br/><br/>
+            <h1>
+              
+   <label for="item_search">${My Holds:}</label> </h1>
+            <!--<input ng-model="item_filter" id="item_filter" class="form-control" placeholder="Search">-->
+       <br/><br/> </div>
+  
+  
+<div class="panel2" dir-paginate="asset in data.asset | filter : item_filter | itemsPerPage: 100">
+       
+ <div id="overlay2" ng-click="c.off()" ng-app="myApp" ng-controller="myCtrl">
+  <div id="text2" >
+    <h1>{{c.data.short_description}}</h1>
+    <img ng-src="/sys_attachment.do?sys_id={{c.data.image}}" width="300px" height="auto" class="pull-left" />
+    <b>Manufacture: </b>{{c.data.manufacture}}<br>
+     <b>Model: </b>{{c.data.model}}<br>
+     <b>Description: </b><div ng-bind-html="c.data.description">{{c.data.description}}</div><br>
+                <a href="/sys_attachment.do?sysparm_referring_url=tear_off&view=true&sys_id={{c.data.image}}" target="_blank"> Click here for full sized image</a>
+
+    <br><br>
+     <div class="overlaylink">
+            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Hold this item</h3></a>
+            <a ng-if="InterestedThisItem(asset.id) == false" class="pointer" ng-click="c.removeInterested(asset.id)"><h3>Release this item</h3></a>
+          </div>
+    
+     </div>
+       
+       
+</div>
+       
+       
+       
+  <div class="panel" ng-if="InterestedThisItem(asset.id) == false" >
+    <a class="pointer detail" ng-click="c.on(asset.image,asset.short_description,asset.manufacture,asset.model,asset.description)">Read More Detail</a>
+              
+              <img ng-src="/sys_attachment.do?sys_id={{::asset.image}}" width="19%" alt="{{::asset.short_description}}" class="pull-left" />
+              <div class="padded">
+                <h1 class="h3 m-t-none m-b-xs">{{asset.short_description}}</h1>
+                <b>Manufacture: </b>{{asset.manufacture}}<br>
+               <b>Model: </b>{{asset.model}}<br>
+                <div class="description"><b>Description: </b><div ng-bind-html="asset.description">{{asset.description}}</div></div><br>
+               </div>
+  
+    
+          
+           
+            <a ng-if="InterestedThisItem(asset.id) == false" class="link pointer" ng-click="c.removeInterested(asset.id)"><h3>Remove</h3></a>
+				
+    </div>
+            
+</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_sthc_asset_marke.Asset_Marketplace</api_name>
+        <client_callable>false</client_callable>
+        <description>x_sthc_supply_chai_supply_chain_outage</description>
+        <name>Asset_Marketplace</name>
+        <script><![CDATA[var Asset_Marketplace = Class.create();
+Asset_Marketplace.prototype = {
+    initialize: function() {
+    },
+	
+	getList: function (){
+		
+		var currentUser = gs.getUser();
+		var list = [];
+		var gr = new GlideRecord('x_sthc_asset_marke_asset_marketplace_table');
+		gr.addQuery('state','1');
+		gr.query();
+
+		while (gr.next()) {
+			var asset = {};
+			asset.id = gr.getUniqueValue();
+			asset.manufacture = gr.getDisplayValue('manufacture');
+			asset.model = gr.getDisplayValue('model');
+			asset.short_description = gr.getDisplayValue('short_description');
+			asset.description = gr.getDisplayValue('description');
+			var im = new GlideRecord('sys_attachment');
+			im.addQuery('table_sys_id', gr.getUniqueValue());
+			im.orderByDesc('sys_created_on');
+			im.setLimit(1);
+			im.query();
+			if(im.next()){
+				asset.image = im.getUniqueValue();
+				
+			}
+			
+			//asset.image = gr.getDisplayValue('image');
+			list.push(asset);
+		}
+		return (list);
+	},	
+	
+	
+	getInterestedList: function (){
+		
+		var currentUser = gs.getUser();
+		var iList = [];
+		var gr = new GlideRecord('x_sthc_asset_marke_interested_users');
+		gr.addQuery('user', gs.getUserID());
+		gr.query();
+		while (gr.next()) {
+			var item = {};
+			//item.id = gr.getUniqueValue();
+			item.id = gr.getValue('asset');
+			iList.push(item);
+		}
+		return (iList);
+	},	
+	
+    type: 'Asset_Marketplace'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>LGOMEZ</sys_created_by>
+        <sys_created_on>2018-08-22 21:33:43</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9dcb201adbcc630096b17d8bbf961946</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Asset_Marketplace</sys_name>
+        <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
+        <sys_update_name>sys_script_include_9dcb201adbcc630096b17d8bbf961946</sys_update_name>
+        <sys_updated_by>LGOMEZ</sys_updated_by>
+        <sys_updated_on>2018-10-10 19:48:27</sys_updated_on>
+    </sys_script_include>
+</record_update>
