@@ -27,6 +27,7 @@ Asset_Marketplace.prototype = {
 			asset.model = gr.getDisplayValue('model');
 			asset.short_description = gr.getDisplayValue('short_description');
 			asset.description = gr.getDisplayValue('description');
+			asset.quantity = gr.getDisplayValue('quantity');
 			var im = new GlideRecord('sys_attachment');
 			im.addQuery('table_sys_id', gr.getUniqueValue());
 			im.orderByDesc('sys_created_on');
@@ -67,7 +68,7 @@ Asset_Marketplace.prototype = {
         <sys_created_on>2018-08-22 21:33:43</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>9dcb201adbcc630096b17d8bbf961946</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>Asset_Marketplace</sys_name>
         <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
         <sys_policy/>
@@ -75,6 +76,6 @@ Asset_Marketplace.prototype = {
         <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
         <sys_update_name>sys_script_include_9dcb201adbcc630096b17d8bbf961946</sys_update_name>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-10-10 19:48:27</sys_updated_on>
+        <sys_updated_on>2018-10-24 20:41:08</sys_updated_on>
     </sys_script_include>
 </record_update>

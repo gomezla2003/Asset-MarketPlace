@@ -5,6 +5,7 @@
         <element label="Image" max_length="40" name="image" type="user_image"/>
         <element label="Manufacture" max_length="40" name="manufacture" type="string"/>
         <element label="Model" max_length="40" name="model" type="string"/>
+        <element label="Quantity" max_length="40" name="quantity" type="integer"/>
         <element display="true" label="Short Description" max_length="140" name="short_description" type="string"/>
         <element choice="3" label="State" mandatory="true" max_length="40" name="state" type="string">
             <choice>
