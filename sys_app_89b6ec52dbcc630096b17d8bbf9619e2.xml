@@ -23,14 +23,14 @@
         <sys_created_by>LGOMEZ</sys_created_by>
         <sys_created_on>2018-08-22 21:11:36</sys_created_on>
         <sys_id>89b6ec52dbcc630096b17d8bbf9619e2</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-10-25 17:12:38</sys_updated_on>
+        <sys_updated_on>2018-12-14 19:16:07</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role display_value="x_sthc_asset_marke.user" name="x_sthc_asset_marke.user">c9b62c92dbcc630096b17d8bbf961983</user_role>
         <vendor/>
         <vendor_prefix/>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </sys_app>
 </record_update>
