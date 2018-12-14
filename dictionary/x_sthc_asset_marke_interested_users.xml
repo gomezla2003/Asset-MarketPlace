@@ -2,6 +2,7 @@
 <database>
     <element label="Interested Users" max_length="40" name="x_sthc_asset_marke_interested_users" type="collection">
         <element label="Asset" max_length="32" name="asset" reference="x_sthc_asset_marke_asset_marketplace_table" type="reference"/>
+        <element label="Quantity" max_length="40" name="quantity" type="integer"/>
         <element choice="3" default="1" label="State" max_length="40" name="state" type="string">
             <choice>
                 <element label="Cancelled" value="4"/>

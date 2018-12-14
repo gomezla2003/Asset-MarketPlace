@@ -75,14 +75,33 @@
 			});
 	}
 	
+	c.checkOut = function(){
+		swal({
+			title: "Thank you for your order",
+			text: "Your cart has been submitted. Items will remain in your cart until transaction is complete",
+			showCancelButton:  false,
+			confirmButtonColor:  '#32CD32',
+			confirmButtonText: 'Got It!'
+		});
+		
+	}
+	
 		$scope.InterestedThisItem = function(ID){
 	var array = c.data.intJSON;
 		var result = array.indexOf(ID);
 		if(result > 1)
 			return false;
 		return true;
-	 
 	}
+		
+	$scope.getQuant = function(){
+		var array = c.data.int;
+		var j = JSON.parse(array);
+		alert(j);
+		
+		return j;
+		
+	}	
 		
 		$scope.getContent = function(obj){
      return obj.value + " " + obj.text;
@@ -94,14 +113,12 @@ var app = angular.module('myApp', ['ngSanitize']);
 $rootScope.$on('updateList', function() {
 	c.server.update();
    });
-
-
-
-
-
-			
+	
 	
 }
+
+
+
 ]]></client_script>
         <controller_as>c</controller_as>
         <css>#container2{
@@ -205,6 +222,14 @@ img{
 }
 
 
+.quant{
+  position:relative;
+ // bottom:10%;
+ // left:40%;
+  z-index:1;
+}
+
+
 //POPUP
 #overlay2 {
     position: fixed; /* Sit on top of the page content */
@@ -232,6 +257,19 @@ img{
   padding:10px;
   line-height: 1.7em;
 }
+
+.checkout{
+  float:right;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+
 
 </css>
         <data_table>sp_instance</data_table>
@@ -285,6 +323,7 @@ function setInterested(id){
 	gr.initialize();
 	gr.setValue('user',gs.getUserID());
 	gr.setValue('asset',id);
+	gr.setValue('quantity',input.quant);
 	gr.insert();
 	input.interested = '';
 }
@@ -305,7 +344,7 @@ function removeInt(id){
         <sys_created_on>2018-08-23 20:25:25</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>a2b5292edb04e30096b17d8bbf9619e4</sys_id>
-        <sys_mod_count>66</sys_mod_count>
+        <sys_mod_count>122</sys_mod_count>
         <sys_name>Asset MarketPlace My Watched Items</sys_name>
         <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
         <sys_policy/>
@@ -313,14 +352,18 @@ function removeInt(id){
         <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
         <sys_update_name>sp_widget_a2b5292edb04e30096b17d8bbf9619e4</sys_update_name>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-10-10 19:46:06</sys_updated_on>
+        <sys_updated_on>2018-12-12 22:56:07</sys_updated_on>
         <template><![CDATA[<div id="container2">
   
   <div class="filter">
   <br/><br/>
             <h1>
               
-   <label for="item_search">${My Holds:}</label> </h1>
+   <label for="item_search">${My Cart:} </label> 
+    <button class="checkout" type="button" ng-click="c.checkOut()">Checkout</button>
+   
+    
+    </h1>
             <!--<input ng-model="item_filter" id="item_filter" class="form-control" placeholder="Search">-->
        <br/><br/> </div>
   
@@ -338,7 +381,7 @@ function removeInt(id){
 
     <br><br>
      <div class="overlaylink">
-            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Hold this item</h3></a>
+            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Add to Cart</h3></a>
             <a ng-if="InterestedThisItem(asset.id) == false" class="pointer" ng-click="c.removeInterested(asset.id)"><h3>Release this item</h3></a>
           </div>
     
@@ -357,9 +400,11 @@ function removeInt(id){
                 <h1 class="h3 m-t-none m-b-xs">{{asset.short_description}}</h1>
                 <b>Manufacture: </b>{{asset.manufacture}}<br>
                <b>Model: </b>{{asset.model}}<br>
-                <div class="description"><b>Description: </b><div ng-bind-html="asset.description">{{asset.description}}</div></div><br>
-               </div>
+                <b>Quantity: </b> {{getQuant()}}<br>
+                <div class="description"><b>Description: </b><div ng-bind-html="asset.description">{{asset.description}}</div></div>
+               
   
+    <br></div>
     
           
            

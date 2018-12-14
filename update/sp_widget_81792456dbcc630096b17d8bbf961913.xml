@@ -42,7 +42,7 @@
 				confirmButtonColor:  '#32CD32',
 				cancelButtonColor: '#3085d6',
 				cancelButtonText: 'Go Back',
-				confirmButtonText: 'Continue & Hold Item'
+				confirmButtonText: 'Continue & Add Item'
 			}).then(function(){
 					  c.data.interested = id;
 						c.server.update();
@@ -150,6 +150,11 @@ img{
 .overlaylink{
     position:absolute;
   right:3%;
+  bottom:3%;
+}
+.quant{
+   position:absolute;
+  right:230px;
   bottom:3%;
 }
 
@@ -268,6 +273,7 @@ img{
 	data.asset = asset.getList();
 	data.int = asset.getInterestedList();
 	data.intJSON = JSON.stringify(data.int);
+	data.quant = 1;
 	
 	
 	if(input){
@@ -297,6 +303,7 @@ function setInterested(id){
 	gr.initialize();
 	gr.setValue('user',gs.getUserID());
 	gr.setValue('asset',id);
+	gr.setValue('quantity',input.quant);
 	gr.insert();
 	input.interested = '';
 }
@@ -317,7 +324,7 @@ function removeInt(id){
         <sys_created_on>2018-08-22 21:23:45</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>81792456dbcc630096b17d8bbf961913</sys_id>
-        <sys_mod_count>379</sys_mod_count>
+        <sys_mod_count>388</sys_mod_count>
         <sys_name>Asset Market Place</sys_name>
         <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
         <sys_policy/>
@@ -325,7 +332,7 @@ function removeInt(id){
         <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
         <sys_update_name>sp_widget_81792456dbcc630096b17d8bbf961913</sys_update_name>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-10-25 16:58:59</sys_updated_on>
+        <sys_updated_on>2018-12-12 21:13:33</sys_updated_on>
         <template><![CDATA[<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>-->
 
@@ -353,7 +360,7 @@ function removeInt(id){
     <br><br>
 
      <div class="overlaylink">
-            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Hold this item</h3></a>
+            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Add to Cart</h3></a>
             <a ng-if="InterestedThisItem(asset.id) == false" class="pointer" ng-click="c.removeInterested(asset.id)"><h3>Release this item</h3></a>
           </div>
     
@@ -380,9 +387,13 @@ function removeInt(id){
                 <a class="readDetail pointer" ng-click="c.on(asset.image,asset.short_description,asset.manufacture,asset.model,asset.description)">Read More Detail</a>
                
   
-    
+    <form class="quant" action="/action_page.php">
+  Quantity:
+  <input ng-model="data.quant" type="number" name="quantity" min="1" max="10" step="1" value="1">
+ 
+</form>
           
-            <a ng-if="InterestedThisItem(asset.id) == true" class="link pointer" ng-click="c.interested(asset.id)"><h3>Hold this item</h3></a>
+            <a ng-if="InterestedThisItem(asset.id) == true" class="link pointer" ng-click="c.interested(asset.id)"><h3>Add to Cart</h3></a>
             <a ng-if="InterestedThisItem(asset.id) == false" class="link pointer" ng-click="c.removeInterested(asset.id)"><h3>Release this item</h3></a>
 				
     </div>
