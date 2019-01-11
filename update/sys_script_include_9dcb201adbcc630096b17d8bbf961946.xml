@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sys_script_include">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>public</access>
         <active>true</active>
@@ -54,9 +53,24 @@ Asset_Marketplace.prototype = {
 		gr.query();
 		while (gr.next()) {
 			var item = {};
+			
 			//item.id = gr.getUniqueValue();
-			item.quant = gr.getValue('quantity');
 			item.id = gr.getValue('asset');
+			item.manufacture = gr.getDisplayValue('asset.manufacture');
+			item.model = gr.getDisplayValue('asset.model');
+			item.short_description = gr.getDisplayValue('asset.short_description');
+			item.description = gr.getDisplayValue('asset.description');
+			item.quantity = gr.getDisplayValue('quantity');
+			var im = new GlideRecord('sys_attachment');
+			im.addQuery('table_sys_id', item.id);
+			im.orderByDesc('sys_created_on');
+			im.setLimit(1);
+			im.query();
+			if(im.next()){
+				item.image = im.getUniqueValue();
+			}
+				
+			
 			iList.push(item);
 		}
 		return (iList);
@@ -69,7 +83,7 @@ Asset_Marketplace.prototype = {
         <sys_created_on>2018-08-22 21:33:43</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>9dcb201adbcc630096b17d8bbf961946</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>Asset_Marketplace</sys_name>
         <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
         <sys_policy/>
@@ -77,6 +91,6 @@ Asset_Marketplace.prototype = {
         <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
         <sys_update_name>sys_script_include_9dcb201adbcc630096b17d8bbf961946</sys_update_name>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-12-12 21:31:41</sys_updated_on>
+        <sys_updated_on>2019-01-10 16:34:02</sys_updated_on>
     </sys_script_include>
 </record_update>

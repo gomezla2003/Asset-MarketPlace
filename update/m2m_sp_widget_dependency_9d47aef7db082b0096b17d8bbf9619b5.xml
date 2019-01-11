@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="m2m_sp_widget_dependency">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_widget_dependency">
     <m2m_sp_widget_dependency action="INSERT_OR_UPDATE">
         <sp_dependency display_value="angular-sanitize.min.js">5c68923bdbc42b0096b17d8bbf961996</sp_dependency>
         <sp_widget display_value="Asset MarketPlace My Watched Items">a2b5292edb04e30096b17d8bbf9619e4</sp_widget>

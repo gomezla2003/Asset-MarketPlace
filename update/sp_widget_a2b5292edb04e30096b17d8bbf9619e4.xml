@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sp_widget">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
+        <category/>
         <client_script><![CDATA[function($scope, $location,spUtil) {
   /* widget controller */
   var c = this;
@@ -64,7 +64,7 @@
 				cancelButtonColor: '#3085d6',
 				cancelButtonText: 'Go Back',
 				confirmButtonText: 'Release Item'
-			}).then(function(){
+			}).then(function(){				
 					 c.data.remove = id;
 		       c.server.update();
 				
@@ -95,13 +95,17 @@
 	}
 		
 	$scope.getQuant = function(){
-		var array = c.data.int;
-		var j = JSON.parse(array);
-		alert(j);
-		
-		return j;
+		//var array = c.data.int;
+		//var j = JSON.parse(array);
+		//alert(j);
+		return "test";
+		//return j;
 		
 	}	
+	
+	function getQuant(){
+		return"test2";
+	}
 		
 		$scope.getContent = function(obj){
      return obj.value + " " + obj.text;
@@ -344,7 +348,7 @@ function removeInt(id){
         <sys_created_on>2018-08-23 20:25:25</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>a2b5292edb04e30096b17d8bbf9619e4</sys_id>
-        <sys_mod_count>122</sys_mod_count>
+        <sys_mod_count>154</sys_mod_count>
         <sys_name>Asset MarketPlace My Watched Items</sys_name>
         <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>
         <sys_policy/>
@@ -352,7 +356,7 @@ function removeInt(id){
         <sys_scope display_value="Asset Marketplace">89b6ec52dbcc630096b17d8bbf9619e2</sys_scope>
         <sys_update_name>sp_widget_a2b5292edb04e30096b17d8bbf9619e4</sys_update_name>
         <sys_updated_by>LGOMEZ</sys_updated_by>
-        <sys_updated_on>2018-12-12 22:56:07</sys_updated_on>
+        <sys_updated_on>2019-01-10 16:58:07</sys_updated_on>
         <template><![CDATA[<div id="container2">
   
   <div class="filter">
@@ -367,8 +371,7 @@ function removeInt(id){
             <!--<input ng-model="item_filter" id="item_filter" class="form-control" placeholder="Search">-->
        <br/><br/> </div>
   
-  
-<div class="panel2" dir-paginate="asset in data.asset | filter : item_filter | itemsPerPage: 100">
+<div class="panel2" dir-paginate="item in data.int | filter : item_filter | itemsPerPage: 100">
        
  <div id="overlay2" ng-click="c.off()" ng-app="myApp" ng-controller="myCtrl">
   <div id="text2" >
@@ -381,8 +384,7 @@ function removeInt(id){
 
     <br><br>
      <div class="overlaylink">
-            <a ng-if="InterestedThisItem(asset.id) == true" class="pointer" ng-click="c.interested(asset.id)"><h3>Add to Cart</h3></a>
-            <a ng-if="InterestedThisItem(asset.id) == false" class="pointer" ng-click="c.removeInterested(asset.id)"><h3>Release this item</h3></a>
+            <a class="pointer" ng-click="c.removeInterested(item.id)"><h3>Release this item</h3></a>
           </div>
     
      </div>
@@ -392,23 +394,24 @@ function removeInt(id){
        
        
        
-  <div class="panel" ng-if="InterestedThisItem(asset.id) == false" >
-    <a class="pointer detail" ng-click="c.on(asset.image,asset.short_description,asset.manufacture,asset.model,asset.description)">Read More Detail</a>
+  <div class="panel" >
+    <a class="pointer detail" ng-click="c.on(item.image,item.short_description,item.manufacture,item.model,item.description)">Read More Detail</a>
               
-              <img ng-src="/sys_attachment.do?sys_id={{::asset.image}}" width="19%" alt="{{::asset.short_description}}" class="pull-left" />
+              <img ng-src="/sys_attachment.do?sys_id={{::item.image}}" width="19%" alt="{{::item.short_description}}" class="pull-left" />
               <div class="padded">
-                <h1 class="h3 m-t-none m-b-xs">{{asset.short_description}}</h1>
-                <b>Manufacture: </b>{{asset.manufacture}}<br>
-               <b>Model: </b>{{asset.model}}<br>
-                <b>Quantity: </b> {{getQuant()}}<br>
-                <div class="description"><b>Description: </b><div ng-bind-html="asset.description">{{asset.description}}</div></div>
+                <h1 class="h3 m-t-none m-b-xs">{{item.short_description}}</h1>
+                <b>Manufacture: </b>{{item.manufacture}}<br>
+               <b>Model: </b>{{item.model}}<br>
+               
+                <b>Held Quantity: </b> {{item.quantity}} <br>
+                <div class="description"><b>Description: </b><div ng-bind-html="item.description">{{item.description}}</div></div>
                
   
     <br></div>
-    
+
           
            
-            <a ng-if="InterestedThisItem(asset.id) == false" class="link pointer" ng-click="c.removeInterested(asset.id)"><h3>Remove</h3></a>
+            <a class="link pointer" ng-click="c.removeInterested(item.id)"><h3>Remove</h3></a>
 				
     </div>
             

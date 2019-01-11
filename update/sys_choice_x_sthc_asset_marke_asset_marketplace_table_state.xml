@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update>
+<?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_choice action="INSERT_OR_UPDATE" field="state" table="x_sthc_asset_marke_asset_marketplace_table" version="3">
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -44,7 +43,7 @@
             <sys_created_by>LGOMEZ</sys_created_by>
             <sys_created_on>2018-08-22 21:29:07</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>caba28d6dbcc630096b17d8bbf961907</sys_id>
+            <sys_id>9cde1affdb96670040f8fcfa0c9619fb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>state</sys_name>
             <sys_package display_value="Asset Marketplace" source="x_sthc_asset_marke">89b6ec52dbcc630096b17d8bbf9619e2</sys_package>

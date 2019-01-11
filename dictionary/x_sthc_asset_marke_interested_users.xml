@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
+<?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Interested Users" max_length="40" name="x_sthc_asset_marke_interested_users" type="collection">
         <element label="Asset" max_length="32" name="asset" reference="x_sthc_asset_marke_asset_marketplace_table" type="reference"/>
         <element label="Quantity" max_length="40" name="quantity" type="integer"/>
         <element choice="3" default="1" label="State" max_length="40" name="state" type="string">
             <choice>
-                <element label="Cancelled" value="4"/>
-                <element label="Completed" value="3"/>
-                <element label="New" value="1"/>
-                <element label="Pending" value="2"/>
+                <element inactive_on_update="false" label="Cancelled" value="4"/>
+                <element inactive_on_update="false" label="Completed" value="3"/>
+                <element inactive_on_update="false" label="New" value="1"/>
+                <element inactive_on_update="false" label="Pending" value="2"/>
             </choice>
         </element>
         <element display="true" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
